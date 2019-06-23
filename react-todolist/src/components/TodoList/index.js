@@ -5,14 +5,16 @@ class TodoList extends Component{
     constructor(props){
         super()
         this.state={
-            // no! use this wont update !!!// todos:props.todos
-            //handleCheckBoxChange: props.handleCheckBoxChang
-        }
+            /*if we put todos here, then in this.state we will only have
+            the state when the constructor excute at the firsttime.
+            setState at father component won't change this. instead it will
+            send new props here*/
+           }
         
 
     }
 
-
+/* conditional rendering using ternary depends on the props.completed you got*/
 
     render(){
        // console.log(this.state.todos)

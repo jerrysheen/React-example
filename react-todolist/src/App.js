@@ -53,22 +53,13 @@ class App extends Component {
 
   }
 
-//click button to enter new todoList
-//input value means your new todo Item
+/* 
+  Here we received a new inputValue， and we will add this to our state.
+  but remember here we need to use "concat", instead of push. 
+  just remember you need to add an re-freshed Items, but array.push will
+  return true.or false
+*/
   handleInputChange=(inputValue)=>{
-    // const id = this.state.todos.length+1
-    // let newItem = {
-    //   userId : Math.floor(Math.random()*20),
-    //   id :id,
-    //   title:inputValue,
-    //   completed:false
-    // }
-    // // using concat otherwise get error
-    // let newItems = this.state.todos.concat(newItem)
-    // this.setState({
-    //   todos:newItems
-    // })
-    // console.log(this.state.todos)
     this.setState({
       todos: this.state.todos.concat({
         userId : Math.floor(Math.random()*20),

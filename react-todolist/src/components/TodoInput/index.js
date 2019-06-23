@@ -24,6 +24,9 @@ class TodoInput extends Component{
         //console.log(this.state.checked)
     }
 
+/* This method is from App component, because now all the data is there.
+after input has changed, here we will excute the handleInputChange method in
+App component */
     handleInputChange=()=>{
         //console.log(inputValue)
         this.state.handleInputChange(this.state.inputValue)

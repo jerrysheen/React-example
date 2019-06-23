@@ -12,13 +12,18 @@ class TodoItem extends Component {
         }
     }
     
+ /* 
+    use this arrow function, we don't need to bind this in the constructor*/   
     handleCheckBoxChange=(event)=>{
         //console.log(`${event.target.id} ${event.target.checked}`)
         const id = event.target.id
         this.state.handleCheckBoxChange(event)
     }
 
-// get rid of re-rendering unchanged Item
+/*
+  use this function we can know will todo Item's state has changed, so that we only
+  need to re-render these components.
+*/
     shouldComponentUpdate(nextProps){
         //console.log(nextProps.completed)
         //console.log(this.props.completed)
@@ -28,6 +33,8 @@ class TodoItem extends Component {
     render(){
         //console.log(this.props.completed)
         console.log(`${this.props.id} re-render`)
+        /*Here we use prop.completed to sepreate what is finished and what we 
+        need to do, and use ternary to add different style here*/
         return(
         <div>
             <li className="list-style">
