@@ -1,0 +1,20 @@
+.completed{
+    color:gray;
+    text-decoration: line-through;
+
+}
+.todo{
+    color: black;
+}
+
+.list-style{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    list-style-type: none;
+    font: 300 1.5em 'Fira Sans', sans-serif;
+}
+
+.checkbox-style{
+    margin-right: 20px;
+    
+}

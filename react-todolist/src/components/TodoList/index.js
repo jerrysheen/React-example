@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import TodoItem from './TodoItem'
+import TodoItem from './FinishedItem'
 
 class TodoList extends Component{
     constructor(props){
@@ -12,19 +12,33 @@ class TodoList extends Component{
 
     }
 
-    // componentDidUpdate(){
-    //     console.log(this.props.todos)
-    // }
+
+
     render(){
        // console.log(this.state.todos)
         return(
-            this.props.todos.map(todo=>{
-            return <TodoItem key={todo.id} 
-            {...todo} 
-            handleCheckBoxChange={(event)=>this.props.handleCheckBoxChange(event)}
-            ></TodoItem>
-        })
-
+            <div>
+                {this.props.todos.map(todo=>{
+                    if(todo.completed === false){
+                        return <TodoItem key={todo.id} 
+                        {...todo} 
+                        handleCheckBoxChange={(event)=>this.props.handleCheckBoxChange(event)}
+                        ></TodoItem>
+                    }
+            
+                })}
+                <hr style={{height:"2px",backgroundColor:"gray"}}/>
+                {this.props.todos.map(todo=>{
+                    if(todo.completed === true){
+                        return <TodoItem key={todo.id} 
+                        {...todo} 
+                        handleCheckBoxChange={(event)=>this.props.handleCheckBoxChange(event)}
+                        ></TodoItem>
+                    }
+            
+                })}
+                
+            </div>  
         )
     }
 } 

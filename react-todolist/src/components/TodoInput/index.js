@@ -1,4 +1,6 @@
 import React,{Component} from 'react'
+import './index.css'
+
 
 class TodoInput extends Component{
     constructor(props){
@@ -29,14 +31,17 @@ class TodoInput extends Component{
 
     render(){
         return(
-          <div> 
+          <div className="group"> 
             <input 
+                className="input"
                 name="inputValue"
                 type="text"
                 value={this.state.inputValue}
                 onChange={this.handleChange}
             />
-            <button onClick={this.handleInputChange}>Submit</button>
+            <button 
+                className="submit"
+                onClick={this.handleInputChange}>Submit</button>
           </div>
         )
     }

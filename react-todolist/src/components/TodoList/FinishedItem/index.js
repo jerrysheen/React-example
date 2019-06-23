@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import './index.css'
 
 class TodoItem extends Component {
     constructor(props){
@@ -17,24 +18,32 @@ class TodoItem extends Component {
         this.state.handleCheckBoxChange(event)
     }
 
-    componentDidUpdate(){
-        //console.log(this.state.id)
-    }
-    
+// get rid of re-rendering unchanged Item
+    shouldComponentUpdate(nextProps){
+        //console.log(nextProps.completed)
+        //console.log(this.props.completed)
+         return nextProps.completed ===!this.props.completed
+     }
+
     render(){
-        console.log(this.props.completed)
+        //console.log(this.props.completed)
+        console.log(`${this.props.id} re-render`)
         return(
         <div>
-            <li>
+            <li className="list-style">
                 <input 
+                    className="checkbox-style"
                     id = {this.props.id}
                     name="checked"
                     type="checkbox"
                     onChange={this.handleCheckBoxChange}
-                    checked={this.props.checked}
+                    checked={this.props.completed}
                     //onChange={this.handleChange}             
                 /> 
-                <span onClick={this.handleChange}>{this.state.title}</span>
+                <span 
+                    onClick={this.handleChange}
+                    className={this.props.completed? "completed":"todo"}
+                >{this.state.title}</span>
             </li>
         </div>
         )

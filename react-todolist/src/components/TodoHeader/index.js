@@ -3,7 +3,7 @@ import React,{Component} from 'react'
 class TodoHeader extends Component{
     render(){
         return(
-            <h1>This is Header</h1>
+            <h1>Todo List</h1>
         )
     }
 }

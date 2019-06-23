@@ -24,6 +24,18 @@ class App extends Component {
           id: 2,
           title: "go to eat the hot pot",
           completed:true
+        },
+        {
+          "userId": 1,
+          "id": 3,
+          "title": "fugiat veniam minus",
+          "completed": false
+        },
+        {
+          "userId": 1,
+          "id": 4,
+          "title": "et porro tempora",
+          "completed": true
         }
 
       ]
@@ -34,7 +46,7 @@ class App extends Component {
     const id = event.target.id-1
     const newItems = [...this.state.todos]
     //console.log(id)
-    newItems[id].completed = newItems[id].completed 
+    newItems[id].completed = !newItems[id].completed 
     this.setState({
         todos: newItems
     })
@@ -72,7 +84,7 @@ class App extends Component {
   render(){
     //console.log(this.state.todos)
     return (
-      <div>
+      <div className="todoHolder">
         <TodoHeader />
         <TodoInput handleInputChange={(inputValue)=>this.handleInputChange(inputValue)}/>
         <TodoList todos={this.state.todos} handleCheckBoxChange={(event)=>this.handleCheckBoxChange(event)}/>

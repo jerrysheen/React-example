@@ -1,0 +1,29 @@
+.submit{
+    color: gray;
+    background: none;
+    border: 2px solid;
+    line-height: inherit;
+    font: 300 1em 'Fira Sans', sans-serif;
+    margin: 0.5em;
+    padding: 0.5em 0.5em;
+}
+.submit:hover,
+.submit:focus{
+    box-shadow: inset 0 0 0 2em DimGray ;
+    border: 2px solid DimGray ;
+    color: white;
+}
+
+.group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.input{
+    padding-left:3%; 
+    margin: 2%;
+    width:100%;
+    border-radius: 1000px ;
+    border-color: gray;
+    font-size:100%;
+}
