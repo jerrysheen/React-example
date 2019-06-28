@@ -19,7 +19,7 @@ const initState =
 
 }]
 
-
+//根据不同的action来执行不同的操作，都回传一个经过操作之后的state
 export default (state = initState,action)=>{
     console.log("开始",action)
     switch(action.type){

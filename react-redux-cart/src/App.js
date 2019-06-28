@@ -10,7 +10,7 @@ export default class App extends Component {
    // console.log(this.props.store.getState())
     return (
       <div>
-        <CartList store={this.props.store}></CartList>
+        <CartList ></CartList>
       </div>
     )
   }
