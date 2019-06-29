@@ -6,8 +6,8 @@ import './App.css';
 class App extends Component {
     render() {
         return (
-            <div>
-                app
+            <div className="App">
+                <Button type="primary">Button</Button>
             </div>
         );
     }

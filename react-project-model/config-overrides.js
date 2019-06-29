@@ -5,16 +5,16 @@
  ***/
 
 const { override, fixBabelImports, addLessLoader } = require('customize-cra');
-
+const modifyVars = require('./modifyVars')
 //与antd进行对接使用
 module.exports = override(
   fixBabelImports('import', {
     libraryName: 'antd',
     libraryDirectory: 'es',
-    tyle: true,
+    style: true,
   }),
   addLessLoader({
     javascriptEnabled: true,
-    modifyVars: { '@primary-color': '#1DA57A' },
+    modifyVars:modifyVars
   }),
 );
