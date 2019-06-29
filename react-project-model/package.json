@@ -33,6 +33,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.4",
     "less": "^3.9.0",
     "less-loader": "^5.0.0"
   }
