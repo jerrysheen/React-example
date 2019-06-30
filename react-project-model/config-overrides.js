@@ -20,6 +20,6 @@ module.exports = override(
   addDecoratorsLegacy(),
   addLessLoader({
     javascriptEnabled: true,
-    modifyVars:modifyVars
+    //modifyVars:modifyVars
   }),
 );

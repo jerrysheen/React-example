@@ -19,15 +19,26 @@ export const mainRouter = [{
 
 export const adminRouter = [{
     pathname:'/admin/dashboard',
-    component:Dashboard
-},{
-    pathname:'/admin/settings',
-    component:Settings
+    component:Dashboard,
+    title:"仪表盘",
+    isNav:true,
+    icon:"dashboard"
 },{
     pathname:'/admin/article',
     component:ArticleList,
-    exact:true
+    title:"文章列表",
+    exact:false
 },{
     pathname:'/admin/article/edit/:id',
-    component:ArticleEdit
+    component:ArticleEdit,
+    title:"文章",
+    type:"edit",
+    isNav:true,
+    icon:"edit"
+},{
+    pathname:'/admin/settings',
+    component:Settings,
+    title:"设置",
+    isNav:true,
+    icon:"setting"
 }]
