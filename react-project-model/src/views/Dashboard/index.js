@@ -5,7 +5,7 @@ export default class Dashboard
     render() {
         return (
             <div>
-                
+                这里是仪表盘
             </div>
         )
     }
