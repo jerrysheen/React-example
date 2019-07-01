@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Card, Table, Tag, Button, Modal,message } from 'antd'
 
 import { getArticles,deleteArticle } from '../../requests'
+import {withRouter} from 'react-router-dom'
 import moment from 'moment'
 
 //实现excel下载功能
@@ -16,7 +17,7 @@ const titleDisplayMap = {
 }
 
 //window.moment = moment
-export default class Article extends Component {
+class Article extends Component {
     constructor() {
         super()
         this.state = {
@@ -59,7 +60,7 @@ export default class Article extends Component {
             render: (record) => {
                 return (
                     <div>
-                        <Button size="small" type="primary">编辑</Button>
+                        <Button size="small" type="primary"onClick={()=>this.toEdit(record)}>编辑</Button>
                         <Button size="small" type="danger" onClick={()=>this.deleteArticle(record)}>删除</Button>
                     </div>
                 )
@@ -69,8 +70,8 @@ export default class Article extends Component {
     }
     //为删除Button添加事件处理
     deleteArticle(record){
-        //console.log(record)
-        //model方法貌似没有办法绑定this。如果要绑定那种就写component
+    //console.log(record)
+    //model方法貌似没有办法绑定this。如果要绑定那种就写component
         Modal.confirm({
             title: 'Do you Want to delete these article?',
             content: record.title,
@@ -86,6 +87,15 @@ export default class Article extends Component {
             onCancel() {
             },
           })
+    }
+
+    //为编辑button添加事件处理,push可以传递参数过去，这里最好只要传一个id过去，再去
+    //后端里面去拿
+    toEdit(record){
+        this.props.history.push({
+            pathname:`/admin/article/edit/:${record.id}`,
+            state:{record}})
+
     }
 
     //利用moment组建，建立时间戳
@@ -125,13 +135,13 @@ export default class Article extends Component {
 
     //用来改变每一页的内容，发送offset过去
     handlePaginationChange = (page) => {
-        console.log(page)
+        //console.log(page)
         this.setState({
             offset: page
         }, () => {
             this.getData()
         })
-        console.log("new Page", this.state.offset)
+        //console.log("new Page", this.state.offset)
 
     }
     //导出excel文件：,aoa_to_sheet接收每一行的data{[],[],[]}，这种资料需要push进去
@@ -174,3 +184,4 @@ export default class Article extends Component {
         )
     }
 }
+export default withRouter(Article)

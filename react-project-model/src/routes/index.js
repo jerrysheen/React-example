@@ -27,14 +27,16 @@ export const adminRouter = [{
     pathname:'/admin/article',
     component:ArticleList,
     title:"文章列表",
-    exact:false
+    exact:true,
+    isNav:true,
+    icon:"edit"
 },{
     pathname:'/admin/article/edit/:id',
     component:ArticleEdit,
     title:"文章",
     type:"edit",
-    isNav:true,
-    icon:"edit"
+    isNav:false
+    
 },{
     pathname:'/admin/settings',
     component:Settings,
