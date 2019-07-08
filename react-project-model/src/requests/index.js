@@ -37,3 +37,7 @@ export const deleteArticle=(id,offset=0,limited=10)=>{
         limited
     })
 }
+
+export const getAmount=(id,offset=0,limited=10)=>{
+    return service.post(`/api/v1/articleAmount`)
+}
