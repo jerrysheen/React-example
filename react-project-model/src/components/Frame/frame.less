@@ -1,10 +1,19 @@
 .my-header{
     padding: 0 16px;
-
+    display:flex;
     .my-logo{
         height: 48px;
+        //flex 表示先占一份
+        flex-grow:1;
         img{
             max-height: 100%;
+        }
+    }
+    .my-left-side-UI{
+        
+        .my-login{
+            color: lightblue;
+            display: flex;
         }
     }
 }

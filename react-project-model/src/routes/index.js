@@ -4,7 +4,8 @@ import{
     NotFound,
     Settings,
     ArticleList,
-    ArticleEdit
+    ArticleEdit,
+    Notifications
 } from '../views'
 
 // 配置路由，分别配置子路由和父路由，差别就是有一些需要登陆之后才能使用
@@ -40,6 +41,12 @@ export const adminRouter = [{
 },{
     pathname:'/admin/settings',
     component:Settings,
+    title:"设置",
+    isNav:true,
+    icon:"setting"
+},{
+    pathname:'/admin/notifications',
+    component:Notifications,
     title:"设置",
     isNav:true,
     icon:"setting"

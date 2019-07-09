@@ -26,14 +26,14 @@ export default class Dashboard extends Component {
           },
           tooltip: {},
           legend: {
-              data:['销量']
+              data:['阅读量']
           },
           xAxis: {
               data: resp.data.amount.map(data=>data.month)
           },
           yAxis: {},
           series: [{
-              name: '销量',
+              name: '阅读量',
               type: 'line',
               data: resp.data.amount.map(data=>data.value),
               smooth:true
