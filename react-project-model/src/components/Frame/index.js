@@ -20,7 +20,7 @@ class Frame extends Component {
 
   menu = (
     <Menu onClick={this.handleDropdown}>
-      <Menu.Item key="/notifications">
+      <Menu.Item key="/admin/notifications">
         <Badge count={1}>
              通知中心
         </Badge>

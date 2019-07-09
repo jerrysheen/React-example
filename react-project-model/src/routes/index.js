@@ -49,5 +49,5 @@ export const adminRouter = [{
     component:Notifications,
     title:"设置",
     isNav:true,
-    icon:"setting"
+    icon:"notification"
 }]
