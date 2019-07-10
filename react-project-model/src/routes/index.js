@@ -47,7 +47,7 @@ export const adminRouter = [{
 },{
     pathname:'/admin/notifications',
     component:Notifications,
-    title:"设置",
+    title:"通知中心",
     isNav:true,
     icon:"notification"
 }]
