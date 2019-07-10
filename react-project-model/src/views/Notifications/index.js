@@ -22,7 +22,7 @@ class Notifications extends Component {
         this.getData()
     }
     render() {
-        console.log(this.props)
+        //console.log(this.props)
         return (
             <div>
                 <Card title="通知中心"
@@ -76,7 +76,7 @@ class Notifications extends Component {
     }
 }
 const mapStateToProps=(state)=>{
-    console.log("state",state)
+   // console.log("state",state)
     return{
         data:state
     }

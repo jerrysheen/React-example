@@ -4,24 +4,35 @@ import logo from './logo.png'
 import './frame.less'
 import { withRouter } from 'react-router-dom'
 
+import {connect} from 'react-redux'
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
-
-
+//state是随着store传下来的，这个东西一开始props中是没有的，所以要通过mapStateTOprops这个函数
+//来将store中的东西和props绑定
+//将未读消息传递出来，存放在props.length中
+const mapStateToProps=(state)=>{
+  console.log(" frame state notification",state.notifications)
+  return{
+      length:state.notifications.list.filter(item=>item.hasRead === false).length
+  }
+}
 
 //修饰器，export的时候就不需要写
+
 @withRouter
+@connect(mapStateToProps)
 class Frame extends Component {
-  
+
+
   handleDropdown = ({key}) => {
     this.props.history.push(key)
   }
 
-  menu = (
+   menu = (
     <Menu onClick={this.handleDropdown}>
       <Menu.Item key="/admin/notifications">
-        <Badge count={1}>
+        <Badge dot>
              通知中心
         </Badge>
       </Menu.Item>
@@ -34,12 +45,24 @@ class Frame extends Component {
     </Menu>
   )
 
+  constructor(){
+    super()
+    this.state = {
+      unreadMessage : 0
+    }
+  }
+
+  componentDidMount(){
+  }
+
   handleSidebar = ({ key }) => {
     this.props.history.push(key)
   }
 
   render() {
-    //console.log(adminRouter)
+    console.log("now props",this.props.length)
+    // console.log("this.props.state",this.props.data)
+    // console.log("this.props",this.props)
     return (
       <Layout style={{ minHeight: "100%" }}>
         <Header className="my-header">
@@ -56,7 +79,7 @@ class Frame extends Component {
 
                 </div>
                 <p className="ant-dropdown-link" >
-                  <Badge count={1}>
+                  <Badge count={this.props.length}>
                     欢迎您！
                   </Badge>
                   <Icon type="down" />
