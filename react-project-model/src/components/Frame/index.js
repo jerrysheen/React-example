@@ -14,7 +14,8 @@ const { Header, Content, Sider } = Layout;
 const mapStateToProps=(state)=>{
   console.log(" frame state notification",state.notifications)
   return{
-      length:state.notifications.list.filter(item=>item.hasRead === false).length
+      length:state.notifications.list.filter(item=>item.hasRead === false).length,
+      hasUnreadMessage:!state.notifications.list.every(item=>item.hasRead === true)
   }
 }
 
@@ -29,10 +30,10 @@ class Frame extends Component {
     this.props.history.push(key)
   }
 
-   menu = (
+   menu =(hasUnreadMessage)=> (
     <Menu onClick={this.handleDropdown}>
       <Menu.Item key="/admin/notifications">
-        <Badge dot>
+        <Badge dot={hasUnreadMessage}>
              通知中心
         </Badge>
       </Menu.Item>
@@ -60,7 +61,7 @@ class Frame extends Component {
   }
 
   render() {
-    console.log("now props",this.props.length)
+    //console.log("now props",this.props.length)
     // console.log("this.props.state",this.props.data)
     // console.log("this.props",this.props)
     return (
@@ -70,7 +71,7 @@ class Frame extends Component {
             <img src={logo} alt="img" />
           </div>
           <div className="my-left-side-UI">
-            <Dropdown overlay={this.menu}>
+            <Dropdown overlay={this.menu(this.props.hasUnreadMessage)}>
               <div className="my-login">
                 <div className="my-avator">
                   <span style={{ marginRight: 24 }}>
