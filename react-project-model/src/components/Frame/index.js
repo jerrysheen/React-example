@@ -5,6 +5,7 @@ import './frame.less'
 import { withRouter } from 'react-router-dom'
 
 import {connect} from 'react-redux'
+import {loginFailed} from '../../actions/login'
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
@@ -15,14 +16,15 @@ const mapStateToProps=(state)=>{
   console.log(" frame state notification",state.notifications)
   return{
       length:state.notifications.list.filter(item=>item.hasRead === false).length,
-      hasUnreadMessage:!state.notifications.list.every(item=>item.hasRead === true)
+      hasUnreadMessage:!state.notifications.list.every(item=>item.hasRead === true),
+      isLogin:state.user.isLogin
   }
 }
 
 //修饰器，export的时候就不需要写
 
 @withRouter
-@connect(mapStateToProps)
+@connect(mapStateToProps,{loginFailed})
 class Frame extends Component {
 
 
@@ -30,6 +32,12 @@ class Frame extends Component {
     this.props.history.push(key)
   }
 
+  handleLogout=()=>{
+    //console.log(this.props.isLogin)
+    this.props.loginFailed()
+    //console.log(this.props)
+    // this.props.history.push(/login/)
+  }
    menu =(hasUnreadMessage)=> (
     <Menu onClick={this.handleDropdown}>
       <Menu.Item key="/admin/notifications">
@@ -40,7 +48,8 @@ class Frame extends Component {
       <Menu.Item key="/admin/settings">
           设置
       </Menu.Item>
-      <Menu.Item key="/logOut">
+      {/* 执行退出登录 */}
+      <Menu.Item key="/login" onClick={this.handleLogout}>
          退出登录
       </Menu.Item>
     </Menu>

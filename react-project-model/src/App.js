@@ -1,16 +1,25 @@
 // src/App.js
 import React, { Component } from 'react';
 import { Route,Switch,Redirect } from 'react-router-dom'
-import './App.css';
+import {connect} from 'react-redux'
 
+import './App.css';
 import {adminRouter} from  './routes'
 import {Frame} from './components'
 
+const mapStateToProps=(state)=>{
+    return{
+        isLogin: state.user.isLogin
+    }
+
+}
+@connect(mapStateToProps,{})
 class App extends Component {
     render() {
         const sidebarRoute = adminRouter.filter(router=>{return(router.isNav===true)})
         //console.log(this.props)
-        return (
+        return (   
+            this.props.isLogin ? 
             <Frame menu={sidebarRoute}>
                 <Switch>
                     {
@@ -30,7 +39,10 @@ class App extends Component {
                     <Redirect to="/404" />
                 </Switch>
             </Frame>
-        );
+            :
+            <Redirect to="/login/" />
+        )
+        
     }
 }
 

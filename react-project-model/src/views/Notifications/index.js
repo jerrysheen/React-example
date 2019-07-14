@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {removeNotification,removeAllNotifications} from '../../actions/notifications'
 
 const mapStateToProps=(state)=>{
-    //console.log("state",state)
+    ////console.log("state",state)
     return{
         list:state.notifications.list
     }
@@ -18,7 +18,7 @@ class Notifications extends Component {
     }
 
     render() {
-        console.log("render!!!")
+        //console.log("render!!!")
         return (
             <div>
                 
