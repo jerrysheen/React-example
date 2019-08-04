@@ -1,11 +1,12 @@
 //正在loading的时候不允许页面变更
 import actionTypes from '../actions/actionTypes'
+const isLogin = Boolean(window.localStorage.getItem("authToken")||window.sessionStorage.getItem("authToken"))
 const initState={
     id:'',
     displayName:'',
     avatar:'',
     role:'',
-    isLogin:false,
+    isLogin,
     isLoading:false 
 }
 

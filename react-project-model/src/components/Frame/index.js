@@ -13,11 +13,14 @@ const { Header, Content, Sider } = Layout;
 //来将store中的东西和props绑定
 //将未读消息传递出来，存放在props.length中
 const mapStateToProps=(state)=>{
-  console.log(" frame state notification",state.notifications)
+  console.log(" frame state user",state)
+  const userName = window.sessionStorage.getItem("name")===null? window.localStorage.getItem("name"):window.sessionStorage.getItem("name")
   return{
       length:state.notifications.list.filter(item=>item.hasRead === false).length,
       hasUnreadMessage:!state.notifications.list.every(item=>item.hasRead === true),
-      isLogin:state.user.isLogin
+      isLogin:state.user.isLogin,
+      userName
+      
   }
 }
 
@@ -90,7 +93,7 @@ class Frame extends Component {
                 </div>
                 <p className="ant-dropdown-link" >
                   <Badge count={this.props.length}>
-                    欢迎您！
+                    {`欢迎您,${this.props.userName}`}
                   </Badge>
                   <Icon type="down" />
                 </p>
