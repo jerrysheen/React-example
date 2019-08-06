@@ -23,6 +23,7 @@ class App extends Component {
             <Frame menu={sidebarRoute}>
                 <Switch>
                     {
+                        //render,有介绍，传递路由器自带的功能
                         adminRouter.map(route=>{
                             return (
                             <Route 
